@@ -1,0 +1,152 @@
+{% load static %}
+{% csrf_token %}
+
+<html lang="en">
+<head>
+{%block styles%}
+{%include "style.html"%}
+{%endblock styles%}
+	
+<title>BOOK Library</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="html.design">
+<!-- description -->
+<meta name="description" content="Registration Form - Responsive Template">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse navbar-collapse-center" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-center navbar-nav ml-auto text-center" >
+            <li class="nav-item ">
+              <a class="nav-link" href="http://34.80.25.94:8000/index/">新增書本 <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://34.80.25.94:8000/index_del/">刪除書本</a>
+            </li>
+			<li class="nav-item">
+				<a class="nav-link" href="http://34.80.25.94:8000/index_update">修改書本</a>
+			</li>
+
+            <li class="nav-item">
+				<a class="nav-link" href="http://34.80.25.94:8000/index_review/">新增心得 <span class="sr-only"></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="http://34.80.25.94:8000/index_delreview/">刪除心得</a>
+			  </li>
+			  <li class="nav-item">
+				  <a class="nav-link" href="http://34.80.25.94:8000/index_res">修改心得</a>
+			  </li>
+			  <li class="nav-item">
+				  <a class="nav-link" href="http://34.80.25.94:8000/index_search">查詢作者</a>
+			  </li>
+
+            <li class="nav-item dropdown dmenu ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              排序書本
+            </a>
+            <div class="dropdown-menu sm-menu ">
+              <a class="dropdown-item" href="http://34.80.25.94:8000/orderby_a_y/">升冪</a>
+              <a class="dropdown-item" href="http://34.80.25.94:8000/desc_a_y/">降冪</a>
+
+            </div>
+		    </li>
+          </ul>
+          <div class="social-part">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </div>
+        </div>
+    </nav>
+        <div class="collapse navbar-collapse navbar-collapse-center" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 text-center" >
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/index/#">新增書本 <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://34.80.25.94:8000/index_del/">刪除書本</a>
+            </li>
+			<li class="nav-item">
+				<a class="nav-link" href="http://34.80.25.94:8000/index_update">修改書本</a>
+			</li>
+
+            <li class="nav-item">
+				<a class="nav-link" href="http://127.0.0.1:8000/index_review/#">新增心得 <span class="sr-only"></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="http://34.80.25.94:8000/index_delreview/">刪除心得</a>
+			  </li>
+			  <li class="nav-item">
+				  <a class="nav-link" href="http://34.80.25.94:8000/index_res">修改心得</a>
+			  </li>
+			  <li class="nav-item">
+				  <a class="nav-link" href="http://34.80.25.94:8000/index_search">查詢作者</a>
+			  </li>
+
+            <li class="nav-item dropdown dmenu ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              排序書本
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="http://127.0.0.1:8000/orderby_a_y/">升冪</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/desc_a_y/">降冪</a>
+
+            </div>
+		    </li>
+          </ul>
+          <div class="social-part">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </div>
+        </div>
+
+
+	<div class="container">
+		<div class="registration-main">
+			<form class="form-horizontal registration-form" role="form">
+				{% csrf_token %}
+				<h3 class="word" >搜尋結果</h3>
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-secondary btn-sm" onclick="orderby_a_y()">降冪</button>
+						<button type="submit" class="btn btn-secondary btn-sm" onclick="desc_a_y()">升冪</button>
+					</div>
+				<table class="table word" >
+					<thead>
+						<tr>
+							<th scope="col">書本名稱</th>
+							<th scope="col">作者名稱</th>
+							<th scope="col">出版年份</th>
+							<th scope="col">閱讀心得</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in df.itertuples %}
+						<tr>
+							<td>{{item.name}}</td>
+							<td>{{item.author}}</td>
+							<td>{{item.year}}</td>
+							<td>{{item.review}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</form> <!-- /form -->
+		</div>
+	</div> <!-- ./container -->
+
+<!-- jquery latest version -->
+{%block scripts%}
+{%include "script.html"%}
+{%endblock scripts%}
+
+</body>
+</html>

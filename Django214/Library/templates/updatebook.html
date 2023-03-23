@@ -1,0 +1,35 @@
+{% load static %}
+{% csrf_token %}
+
+<html lang="en">
+<head>
+{%block styles%}
+{%include "style.html"%}
+{%endblock styles%}
+	
+<title>BOOK Library</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="html.design">
+<!-- description -->
+<meta name="description" content="Registration Form - Responsive Template">
+
+</head>
+<body>
+	<div class="container">
+		<div class="registration-main">
+			<form class="form-horizontal registration-form" role="form" >
+				{% csrf_token %}
+				<h2><i class="mdi mdi-notebook"></i> 書籍修改成功 </h2>
+			</form> <!-- /form -->
+		</div>
+	</div> <!-- ./container -->
+
+<!-- jquery latest version -->
+{%block scripts%}
+{%include "script.html"%}
+{%endblock scripts%}
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static %}
+{% csrf_token %}
+
+<html lang="en">
+<head>
+{%block styles%}
+{%include "style.html"%}
+{%endblock styles%}
+	
+<title>BOOK Library</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="html.design">
+<!-- description -->
+<meta name="description" content="Registration Form - Responsive Template">
+
+</head>
+<body>
+	<div class="container">
+		<div class="registration-main">
+			<form class="form-horizontal registration-form" role="form" >
+				{% csrf_token %}
+				<h2><i class="mdi mdi-notebook"></i> 心得修改成功 </h2>
+			</form> <!-- /form -->
+		</div>
+	</div> <!-- ./container -->
+
+<!-- jquery latest version -->
+<script src="{$ static 'js/jquery.min.js' %}"></script>
+<!-- popper.min.js -->
+<script src="{$ static 'js/popper.min.js' %}"></script>    
+<!-- bootstrap js -->
+<script src="{$ static 'js/bootstrap.min.js' %}"></script>
+<!-- Jquery Rippler js -->
+<script src="{% static 'js/jquery.rippler.min.js' %}"></script>	
+<!-- Select2 Min js -->
+<script src="{% static 'js/select2.min.js' %}"></script>
+<!-- Moment Min js -->
+<script src="{% static 'js/moment.min.js' %}"></script>	
+<!-- Daterangepicker js -->
+<script src="{% static 'js/daterangepicker.js' %}"></script>	
+<!-- Datepicker js -->
+<script src="{% static 'js/datepicker.js' %}"></script>	
+<!-- select2 js -->
+<script src="{% static 'js/select2.js' %}"></script>	
+<!-- script js -->
+<script src="{% static 'js/registration.js' %}"></script>
+</body>
+</html>
